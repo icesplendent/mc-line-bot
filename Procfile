@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath Mylinebot Mylinebot.wsgi
+web: gunicorn --pythonpath Mylinebot.wsgi
