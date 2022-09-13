@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-rp8ctfhuyu_32ai4i)s)j^=b%k=8yq*%1n3)tx=m%o!5g__3dt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://linebotapp2022.herokuapp.com/']
 
 
 # Application definition
@@ -130,7 +130,7 @@ STATICILES_DIRS=[
 
 django_on_heroku.settings(locals())
 
-ALLOWED_HOSTS = ['https://linebotapp2022.herokuapp.com/']
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
