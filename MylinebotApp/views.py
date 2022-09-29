@@ -100,6 +100,7 @@ def callback(request):
                         message.append(TextSendMessage(text=info))
                 elif event.message.text=='刪除會員資料':
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).delete() #刪除
+                #elif event.message.text==''
                 #else:
                     #message.append(TextSendMessage(text='再想想'))
                 line_bot_api.reply_message(event.reply_token,message)
