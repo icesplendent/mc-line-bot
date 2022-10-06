@@ -129,13 +129,24 @@ def callback(request):
                 elif event.message.text=='刪除會員資料':
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).delete() #刪除
                 elif ('Line:'in event.message.text):
-                    message.append(TextSendMessage(text='輸入line的密碼'))
+                    message.append(TextSendMessage(text='輸入了line的密碼'))
                     x = event.message.text.split(":")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==36):
                         message.append(TextSendMessage(text='密碼正確，增加點數'))
+                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        new_points=0
+                        add_point=random.randrange(100,301,100)
+                        info = '恭喜增加...\n%s點'%(add_point)
+                        message.append(TextSendMessage(text=info))
+                        for user in user_info:
+                            new_points = user.points + add_point
+                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                        for user in user_info:
+                            info = '現在點數points=%s'%(new_points)
+                            message.append(TextSendMessage(text=info))
                     else:
-                        message.append(TextSendMessage(text='密碼錯誤'))
+                        message.append(TextSendMessage(text='密碼錯誤，再試試看'))
 
                 else:
                     message.append(TextSendMessage(text='再想想'))
