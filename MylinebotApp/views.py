@@ -11,7 +11,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
-from linebot.models import MessageEvent, TextSendMessage
+#from linebot.models import MessageEvent, TextSendMessage #原本的
+from linebot.models import *
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
@@ -58,7 +59,7 @@ def callback(request):
                 elif event.message.text=='確定兌換 Level 1 抽獎卷':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                     new_points=0
-                    less_point=1000
+                    less_point=1200
                     for user in user_info:
                         new_points = user.points - less_point
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
@@ -66,9 +67,20 @@ def callback(request):
                         info = 'points=%s'%(new_points)
                         message.append(TextSendMessage(text=info)) #輸出
                     if new_points < 0 :
-                        message.append(TextSendMessage(text='喔不你的錢錢不夠，到了抽獎區也不能抽獎喔'))
+                        message.append(TextSendMessage(text='喔不你的錢錢不夠，不能兌換抽獎卷喔'))
+                        for user in user_info:
+                            new_points = user.points + less_point
+                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改回原本的
+                        for user in user_info:
+                            info = 'points=%s'%(new_points)
+                            message.append(TextSendMessage(text=info)) #輸出
                     else :
                         message.append(TextSendMessage(text='請到抽獎區抽獎，並出示黑客松幣餘額'))
+                        image_message = ImageSendMessage(
+                            original_content_url='https://drive.google.com/file/d/1SkdG3EQqwWswyIXUgUREr4UjmAzZwt7a/view?usp=sharing',
+                            preview_image_url='https://drive.google.com/file/d/1SkdG3EQqwWswyIXUgUREr4UjmAzZwt7a/view?usp=sharing'
+                        )
+                        message.append(image_message) #輸出抽獎卷 還沒試過可不可
                 elif event.message.text=='確定兌換 Level 2 抽獎卷':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                     new_points=0
