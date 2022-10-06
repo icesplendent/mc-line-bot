@@ -71,7 +71,7 @@ def callback(request):
                 elif event.message.text=='各企業任務總覽':
                     message.append(TextSendMessage(text='以下是各企業任務總覽\n台積電\nASML\nKronos\nNXP\n意法'))
                 elif event.message.text=='活動規則':
-                    message.append(TextSendMessage(text='以下是活動規則\n現在輸入「增加點數」就可以增加100~300點\n試試看'))
+                    message.append(TextSendMessage(text='以下是活動規則\n請以下列格式輸入\n企業名:密碼\nex line:ABCD\n現在可以輸入line或tsmc的\n或是現在輸入「增加點數」就可以增加100~300點\n試試看'))
                 elif event.message.text=='確定兌換 Level 1 抽獎卷':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                     new_points=0
@@ -133,6 +133,25 @@ def callback(request):
                     x = event.message.text.split(":")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==36):
+                        message.append(TextSendMessage(text='密碼正確，增加點數'))
+                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        new_points=0
+                        add_point=random.randrange(100,301,100)
+                        info = '恭喜增加...\n%s點'%(add_point)
+                        message.append(TextSendMessage(text=info))
+                        for user in user_info:
+                            new_points = user.points + add_point
+                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                        for user in user_info:
+                            info = '現在點數points=%s'%(new_points)
+                            message.append(TextSendMessage(text=info))
+                    else:
+                        message.append(TextSendMessage(text='密碼錯誤，再試試看'))
+                elif ('tsmc:'in event.message.text):
+                    message.append(TextSendMessage(text='輸入了tsmc的密碼'))
+                    x = event.message.text.split(":")
+                    seaftermod = secretnum(x[1])
+                    if (seaftermod==25):
                         message.append(TextSendMessage(text='密碼正確，增加點數'))
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                         new_points=0
