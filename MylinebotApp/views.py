@@ -132,7 +132,7 @@ def callback(request):
                     message.append(TextSendMessage(text='輸入line的密碼'))
                     x = event.message.text.split(":")
                     seaftermod = secretnum(x[1])
-                    if (seaftermod==186):
+                    if (seaftermod==36):
                         message.append(TextSendMessage(text='密碼正確，增加點數'))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤'))
