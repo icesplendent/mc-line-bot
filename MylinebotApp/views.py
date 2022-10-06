@@ -133,7 +133,7 @@ def callback(request):
                     message.append(TextSendMessage(text='他要輸入line的密碼了'))
                     x = event.message.text.split(":")
                     seaftermod = secretnum(x[1])
-                    info = 'aftermod=%s'%(secretmod)
+                    info = 'aftermod=%s'%(seaftermod)
                     message.append(TextSendMessage(text=info))
 
                 else:
