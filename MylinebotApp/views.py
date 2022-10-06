@@ -93,8 +93,8 @@ def callback(request):
                     else :
                         message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
                         image_message = ImageSendMessage(
-                            original_content_url='https://reurl.cc/V1VndZ',
-                            preview_image_url='https://reurl.cc/V1VndZ'
+                            original_content_url='https://reurl.cc/7pxNNb',
+                            preview_image_url='https://reurl.cc/7pxNNb'
                         )
                         message.append(image_message) #輸出抽獎卷 還沒試過可不可
                 elif event.message.text=='確定兌換 Level 2 抽獎卷':
