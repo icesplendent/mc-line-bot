@@ -31,9 +31,8 @@ def anyToDecimal(num,n):
         nNum = nNum -1 
     return new_num
 def secretnum(a):
-    a = input()
     anyToDecimal(a,36)
-    return anyToDecimal(a,36) % 2022 #這裡可以拿到最後要的mod出來的值 2022要記得改掉
+    return (anyToDecimal(a,36) % 2022) #這裡可以拿到最後要的mod出來的值 2022要記得改掉
 
 @csrf_exempt
 def callback(request):
@@ -131,10 +130,10 @@ def callback(request):
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).delete() #刪除
                 elif ('Line:'in event.message.text):
                     message.append(TextSendMessage(text='他要輸入line的密碼了'))
-                    #x = event.message.text.split(":")
-                    #seaftermod = secretnum(x[1])
-                    #info = 'aftermod=%s'%(seaftermod)
-                    #message.append(TextSendMessage(text=info))
+                    x = event.message.text.split(":")
+                    seaftermod = secretnum(x[1])
+                    info = 'aftermod=%s'%(seaftermod)
+                    message.append(TextSendMessage(text=info))
 
                 else:
                     message.append(TextSendMessage(text='再想想'))
