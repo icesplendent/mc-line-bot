@@ -75,7 +75,7 @@ def callback(request):
                             info = 'points=%s'%(new_points)
                             message.append(TextSendMessage(text=info)) #輸出
                     else :
-                        message.append(TextSendMessage(text='請到抽獎區抽獎，並出示黑客松幣餘額'))
+                        message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
                         image_message = ImageSendMessage(
                             original_content_url='https://reurl.cc/V1VndZ',
                             preview_image_url='https://reurl.cc/V1VndZ'
@@ -112,7 +112,8 @@ def callback(request):
                         message.append(TextSendMessage(text=info))
                 elif event.message.text=='刪除會員資料':
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).delete() #刪除
-                #elif event.message.text==''
+                elif ('Line:'in event.message.text):
+                     message.append(TextSendMessage(text='他要輸入line的密碼了'))
                 else:
                     message.append(TextSendMessage(text='再想想'))
                 line_bot_api.reply_message(event.reply_token,message)
