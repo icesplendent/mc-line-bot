@@ -30,7 +30,7 @@ def anyToDecimal(num,n):
         new_num = new_num  + baseStr[i]*pow(n,nNum)
         nNum = nNum -1 
     return new_num
-def secretnum(a)
+def secretnum(a):
     a = input()
     anyToDecimal(a,36)
     return anyToDecimal(a,36) % 2022 #這裡可以拿到最後要的mod出來的值 2022要記得改掉
