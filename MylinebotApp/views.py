@@ -69,8 +69,11 @@ def callback(request):
                         info = 'points=%s'%(user.points)
                         message.append(TextSendMessage(text=info))
                 elif event.message.text=='企業位置圖':
+                    #試著做點事
                 elif event.message.text=='各企業任務總覽':
+                    #試著做點事
                 elif event.message.text=='活動規則':
+                    #試著做點事
                 elif event.message.text=='確定兌換 Level 1 抽獎卷':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                     new_points=0
