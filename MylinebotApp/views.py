@@ -96,11 +96,11 @@ def callback(request):
                             original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/309748365_100109239563436_8451180494723915841_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=Qavv28yRbyMAX_BPpN1&tn=FKUeTQCsg2KYCGQ3&_nc_ht=scontent-tpe1-1.xx&oh=00_AT8kyuCPH5igOe4uM7QHKr12SjUqTmoITiuXdZSbb46sVQ&oe=63488F97',
                             preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/309748365_100109239563436_8451180494723915841_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=Qavv28yRbyMAX_BPpN1&tn=FKUeTQCsg2KYCGQ3&_nc_ht=scontent-tpe1-1.xx&oh=00_AT8kyuCPH5igOe4uM7QHKr12SjUqTmoITiuXdZSbb46sVQ&oe=63488F97'
                         )
-                        message.append(image_message) #輸出抽獎卷 還沒試過可不可
+                        message.append(image_message) #輸出抽獎卷 
                 elif event.message.text=='確定兌換 Level 2 抽獎卷':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                     new_points=0
-                    less_point=2000
+                    less_point=1900
                     for user in user_info:
                         new_points = user.points - less_point
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
@@ -108,9 +108,45 @@ def callback(request):
                         info = 'points=%s'%(new_points)
                         message.append(TextSendMessage(text=info)) #輸出
                     if new_points < 0 :
-                        message.append(TextSendMessage(text='喔不你的錢錢不夠，到了抽獎區也不能抽獎喔'))
+                        message.append(TextSendMessage(text='喔不你的錢錢不夠，不能兌換抽獎卷喔'))
+                        for user in user_info:
+                            new_points = user.points 
+                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改回原本的
+                        for user in user_info:
+                            info = 'points=%s'%(new_points)
+                            message.append(TextSendMessage(text=info)) #輸出
                     else :
-                        message.append(TextSendMessage(text='請到抽獎區抽獎，並出示黑客松幣餘額'))
+                        message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
+                        image_message = ImageSendMessage(
+                            original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/310650538_100111356229891_866083673074835272_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=sBh92GOoEZEAX9jLhXA&_nc_ht=scontent-tpe1-1.xx&oh=00_AT9W8J2WayEdXWy9TAFDuhGBSLhUV5aApHOxtTgBRzP--w&oe=6348C5DC',
+                            preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/310650538_100111356229891_866083673074835272_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=sBh92GOoEZEAX9jLhXA&_nc_ht=scontent-tpe1-1.xx&oh=00_AT9W8J2WayEdXWy9TAFDuhGBSLhUV5aApHOxtTgBRzP--w&oe=6348C5DC'
+                        )
+                        message.append(image_message) #輸出抽獎卷
+                elif event.message.text=='確定兌換 Level 3 抽獎卷':
+                    user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                    new_points=0
+                    less_point=2500
+                    for user in user_info:
+                        new_points = user.points - less_point
+                    User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                    for user in user_info:
+                        info = 'points=%s'%(new_points)
+                        message.append(TextSendMessage(text=info)) #輸出
+                    if new_points < 0 :
+                        message.append(TextSendMessage(text='喔不你的錢錢不夠，不能兌換抽獎卷喔'))
+                        for user in user_info:
+                            new_points = user.points 
+                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改回原本的
+                        for user in user_info:
+                            info = 'points=%s'%(new_points)
+                            message.append(TextSendMessage(text=info)) #輸出
+                    else :
+                        message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
+                        image_message = ImageSendMessage(
+                            original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/310107356_100111389563221_7983913375440295230_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=HlbIuzWPm2cAX-OFoNS&_nc_ht=scontent-tpe1-1.xx&oh=00_AT8ONPkzekx0MG9BmPzkEXOGewMLbAKF7ErsPBIPnLS6Tw&oe=634961A8',
+                            preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/310107356_100111389563221_7983913375440295230_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=HlbIuzWPm2cAX-OFoNS&_nc_ht=scontent-tpe1-1.xx&oh=00_AT8ONPkzekx0MG9BmPzkEXOGewMLbAKF7ErsPBIPnLS6Tw&oe=634961A8'
+                        )
+                        message.append(image_message) #輸出抽獎卷
                 elif event.message.text=='輸出會員資料':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url)
                     for user in user_info:
