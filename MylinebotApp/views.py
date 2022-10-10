@@ -361,6 +361,106 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
+                elif ('Cathay:'in event.message.text):
+                    message.append(TextSendMessage(text='輸入了國泰金控的密碼'))
+                    x = event.message.text.split(":")
+                    seaftermod = secretnum(x[1])
+                    if (seaftermod==22):
+                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        for user in user_info:
+                            if(user.Cathay==1):
+                                info = '你已經拿過這個企業的點數了喔'
+                                message.append(TextSendMessage(text=info))
+                            else:
+                                message.append(TextSendMessage(text='密碼正確，增加點數'))
+                                new_points=0
+                                add_point=random.randrange(100,301,100)
+                                info = '恭喜增加...\n%s點'%(add_point)
+                                message.append(TextSendMessage(text=info))
+                                for user in user_info:
+                                    new_points = user.points + add_point
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Cathay=1) #修改
+                                for user in user_info:
+                                    info = '現在點數points=%s'%(new_points)
+                                    message.append(TextSendMessage(text=info))
+                    else:
+                        message.append(TextSendMessage(text='密碼錯誤，再試試看'))
+                elif ('CTBC:'in event.message.text):
+                    message.append(TextSendMessage(text='輸入了中國信託的密碼'))
+                    x = event.message.text.split(":")
+                    seaftermod = secretnum(x[1])
+                    if (seaftermod==20):
+                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        for user in user_info:
+                            if(user.CTBC==1):
+                                info = '你已經拿過這個企業的點數了喔'
+                                message.append(TextSendMessage(text=info))
+                            else:
+                                message.append(TextSendMessage(text='密碼正確，增加點數'))
+                                new_points=0
+                                add_point=random.randrange(100,301,100)
+                                info = '恭喜增加...\n%s點'%(add_point)
+                                message.append(TextSendMessage(text=info))
+                                for user in user_info:
+                                    new_points = user.points + add_point
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(CTBC=1) #修改
+                                for user in user_info:
+                                    info = '現在點數points=%s'%(new_points)
+                                    message.append(TextSendMessage(text=info))
+                    else:
+                        message.append(TextSendMessage(text='密碼錯誤，再試試看'))
+                elif ('104:'in event.message.text):
+                    message.append(TextSendMessage(text='輸入了一零四資訊科技的密碼'))
+                    x = event.message.text.split(":")
+                    seaftermod = secretnum(x[1])
+                    if (seaftermod==16):
+                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        for user in user_info:
+                            if(user.a104==1):
+                                info = '你已經拿過這個企業的點數了喔'
+                                message.append(TextSendMessage(text=info))
+                            else:
+                                message.append(TextSendMessage(text='密碼正確，增加點數'))
+                                new_points=0
+                                add_point=random.randrange(100,301,100)
+                                info = '恭喜增加...\n%s點'%(add_point)
+                                message.append(TextSendMessage(text=info))
+                                for user in user_info:
+                                    new_points = user.points + add_point
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(a104=1) #修改
+                                for user in user_info:
+                                    info = '現在點數points=%s'%(new_points)
+                                    message.append(TextSendMessage(text=info))
+                    else:
+                        message.append(TextSendMessage(text='密碼錯誤，再試試看'))
+                elif ('PixArt:'in event.message.text):
+                    message.append(TextSendMessage(text='輸入了原相科技的密碼'))
+                    x = event.message.text.split(":")
+                    seaftermod = secretnum(x[1])
+                    if (seaftermod==19):
+                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        for user in user_info:
+                            if(user.Pixart==1):
+                                info = '你已經拿過這個企業的點數了喔'
+                                message.append(TextSendMessage(text=info))
+                            else:
+                                message.append(TextSendMessage(text='密碼正確，增加點數'))
+                                new_points=0
+                                add_point=random.randrange(100,301,100)
+                                info = '恭喜增加...\n%s點'%(add_point)
+                                message.append(TextSendMessage(text=info))
+                                for user in user_info:
+                                    new_points = user.points + add_point
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Pixart=1) #修改
+                                for user in user_info:
+                                    info = '現在點數points=%s'%(new_points)
+                                    message.append(TextSendMessage(text=info))
+                    else:
+                        message.append(TextSendMessage(text='密碼錯誤，再試試看'))
 
 
 
