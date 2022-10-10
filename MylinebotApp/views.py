@@ -182,8 +182,8 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
-                                    user.Line = 1
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Line=1) #修改
                                 for user in user_info:
                                     info = '現在點數points=%s'%(new_points)
                                     message.append(TextSendMessage(text=info))
