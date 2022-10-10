@@ -93,8 +93,8 @@ def callback(request):
                     else :
                         message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
                         image_message = ImageSendMessage(
-                            original_content_url='https://www.instagram.com/p/CjirZM2PX1n/?utm_source=ig_web_copy_link',
-                            preview_image_url='https://www.instagram.com/p/CjirZM2PX1n/?utm_source=ig_web_copy_link'
+                            original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/309748365_100109239563436_8451180494723915841_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=Qavv28yRbyMAX_BPpN1&tn=FKUeTQCsg2KYCGQ3&_nc_ht=scontent-tpe1-1.xx&oh=00_AT8kyuCPH5igOe4uM7QHKr12SjUqTmoITiuXdZSbb46sVQ&oe=63488F97',
+                            preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/309748365_100109239563436_8451180494723915841_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=Qavv28yRbyMAX_BPpN1&tn=FKUeTQCsg2KYCGQ3&_nc_ht=scontent-tpe1-1.xx&oh=00_AT8kyuCPH5igOe4uM7QHKr12SjUqTmoITiuXdZSbb46sVQ&oe=63488F97'
                         )
                         message.append(image_message) #輸出抽獎卷 還沒試過可不可
                 elif event.message.text=='確定兌換 Level 2 抽獎卷':
