@@ -68,12 +68,7 @@ def callback(request):
                     for user in user_info:
                         info = 'points=%s'%(user.points)
                         message.append(TextSendMessage(text=info))
-                #elif event.message.text=='企業位置圖':
-                    #試著做點事
-                #elif event.message.text=='各企業任務總覽':
-                    #試著做點事
-                #elif event.message.text=='活動規則':
-                    #試著做點事
+
                 elif event.message.text=='確定兌換 Level 1 抽獎卷':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                     new_points=0
@@ -216,9 +211,162 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
+                elif ('STM:'in event.message.text):
+                    message.append(TextSendMessage(text='輸入了意法半導體的密碼'))
+                    x = event.message.text.split(":")
+                    seaftermod = secretnum(x[1])
+                    if (seaftermod==34):
+                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        for user in user_info:
+                            if(user.STM==1):
+                                info = '你已經拿過這個企業的點數了喔'
+                                message.append(TextSendMessage(text=info))
+                            else:
+                                message.append(TextSendMessage(text='密碼正確，增加點數'))
+                                new_points=0
+                                add_point=random.randrange(100,301,100)
+                                info = '恭喜增加...\n%s點'%(add_point)
+                                message.append(TextSendMessage(text=info))
+                                for user in user_info:
+                                    new_points = user.points + add_point
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(STM=1) #修改
+                                for user in user_info:
+                                    info = '現在點數points=%s'%(new_points)
+                                    message.append(TextSendMessage(text=info))                    
+                    else:
+                        message.append(TextSendMessage(text='密碼錯誤，再試試看'))
+                elif ('Yahoo:'in event.message.text):
+                    message.append(TextSendMessage(text='輸入了Yahoo的密碼'))
+                    x = event.message.text.split(":")
+                    seaftermod = secretnum(x[1])
+                    if (seaftermod==32):
+                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        for user in user_info:
+                            if(user.Yahoo==1):
+                                info = '你已經拿過這個企業的點數了喔'
+                                message.append(TextSendMessage(text=info))
+                            else:
+                                message.append(TextSendMessage(text='密碼正確，增加點數'))
+                                new_points=0
+                                add_point=random.randrange(100,301,100)
+                                info = '恭喜增加...\n%s點'%(add_point)
+                                message.append(TextSendMessage(text=info))
+                                for user in user_info:
+                                    new_points = user.points + add_point
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Yahoo=1) #修改
+                                for user in user_info:
+                                    info = '現在點數points=%s'%(new_points)
+                                    message.append(TextSendMessage(text=info))
+                    else:
+                        message.append(TextSendMessage(text='密碼錯誤，再試試看'))
+                elif ('ASML:'in event.message.text):
+                    message.append(TextSendMessage(text='輸入了ASML艾司摩爾的密碼'))
+                    x = event.message.text.split(":")
+                    seaftermod = secretnum(x[1])
+                    if (seaftermod==30):
+                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        for user in user_info:
+                            if(user.ASML==1):
+                                info = '你已經拿過這個企業的點數了喔'
+                                message.append(TextSendMessage(text=info))
+                            else:
+                                message.append(TextSendMessage(text='密碼正確，增加點數'))
+                                new_points=0
+                                add_point=random.randrange(100,301,100)
+                                info = '恭喜增加...\n%s點'%(add_point)
+                                message.append(TextSendMessage(text=info))
+                                for user in user_info:
+                                    new_points = user.points + add_point
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(ASML=1) #修改
+                                for user in user_info:
+                                    info = '現在點數points=%s'%(new_points)
+                                    message.append(TextSendMessage(text=info))
+                    else:
+                        message.append(TextSendMessage(text='密碼錯誤，再試試看'))
+                elif ('NXP:'in event.message.text):
+                    message.append(TextSendMessage(text='輸入了恩智浦半導體的密碼'))
+                    x = event.message.text.split(":")
+                    seaftermod = secretnum(x[1])
+                    if (seaftermod==28):
+                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        for user in user_info:
+                            if(user.NXP==1):
+                                info = '你已經拿過這個企業的點數了喔'
+                                message.append(TextSendMessage(text=info))
+                            else:
+                                message.append(TextSendMessage(text='密碼正確，增加點數'))
+                                new_points=0
+                                add_point=random.randrange(100,301,100)
+                                info = '恭喜增加...\n%s點'%(add_point)
+                                message.append(TextSendMessage(text=info))
+                                for user in user_info:
+                                    new_points = user.points + add_point
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(NXP=1) #修改
+                                for user in user_info:
+                                    info = '現在點數points=%s'%(new_points)
+                                    message.append(TextSendMessage(text=info))
+                    else:
+                        message.append(TextSendMessage(text='密碼錯誤，再試試看'))
+                elif ('Hsinchu:'in event.message.text):
+                    message.append(TextSendMessage(text='輸入了新竹市政府的密碼'))
+                    x = event.message.text.split(":")
+                    seaftermod = secretnum(x[1])
+                    if (seaftermod==26):
+                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        for user in user_info:
+                            if(user.Hsinchu==1):
+                                info = '你已經拿過這個企業的點數了喔'
+                                message.append(TextSendMessage(text=info))
+                            else:
+                                message.append(TextSendMessage(text='密碼正確，增加點數'))
+                                new_points=0
+                                add_point=random.randrange(100,301,100)
+                                info = '恭喜增加...\n%s點'%(add_point)
+                                message.append(TextSendMessage(text=info))
+                                for user in user_info:
+                                    new_points = user.points + add_point
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Hsinchu=1) #修改
+                                for user in user_info:
+                                    info = '現在點數points=%s'%(new_points)
+                                    message.append(TextSendMessage(text=info))
+                    else:
+                        message.append(TextSendMessage(text='密碼錯誤，再試試看'))
+                elif ('Kronos:'in event.message.text):
+                    message.append(TextSendMessage(text='輸入了Kronos Research麒點科技的密碼'))
+                    x = event.message.text.split(":")
+                    seaftermod = secretnum(x[1])
+                    if (seaftermod==24):
+                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        for user in user_info:
+                            if(user.Kronos==1):
+                                info = '你已經拿過這個企業的點數了喔'
+                                message.append(TextSendMessage(text=info))
+                            else:
+                                message.append(TextSendMessage(text='密碼正確，增加點數'))
+                                new_points=0
+                                add_point=random.randrange(100,301,100)
+                                info = '恭喜增加...\n%s點'%(add_point)
+                                message.append(TextSendMessage(text=info))
+                                for user in user_info:
+                                    new_points = user.points + add_point
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Kronos=1) #修改
+                                for user in user_info:
+                                    info = '現在點數points=%s'%(new_points)
+                                    message.append(TextSendMessage(text=info))
+                    else:
+                        message.append(TextSendMessage(text='密碼錯誤，再試試看'))
 
-                else:
-                    message.append(TextSendMessage(text='再想想'))
+
+
+
+                #else:
+                    #message.append(TextSendMessage(text='再想想'))
                 line_bot_api.reply_message(event.reply_token,message)
 
                 return HttpResponse()
