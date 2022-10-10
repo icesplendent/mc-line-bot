@@ -12,7 +12,7 @@ class User_Info(models.Model):
     Yahoo = models.IntegerField(default=0)
     ASML = models.IntegerField(default=0)
     NXP = models.IntegerField(default=0)
-    Hsinchu = models.IntegerField(default=0)                           #中華電信
+    Hsinchu = models.IntegerField(default=0)                           #新竹市政府
     Kronos = models.IntegerField(default=0)
     Cathay = models.IntegerField(default=0)                             #國泰
     CTBC = models.IntegerField(default=0)                               #中信金控

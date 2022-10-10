@@ -68,10 +68,6 @@ def callback(request):
                     for user in user_info:
                         info = 'points=%s'%(user.points)
                         message.append(TextSendMessage(text=info))
-                elif event.message.text=='各企業任務總覽':
-                    message.append(TextSendMessage(text='以下是各企業任務總覽\n台積電\nASML\nKronos\nNXP\n意法'))
-                elif event.message.text=='活動規則':
-                    message.append(TextSendMessage(text='以下是活動規則\n請以下列格式輸入\n企業名:密碼\nex line:ABCD\n現在可以輸入line或tsmc的\n或是現在輸入「增加點數」就可以增加100~300點\n試試看'))
                 elif event.message.text=='確定兌換 Level 1 抽獎卷':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                     new_points=0
@@ -164,7 +160,7 @@ def callback(request):
                         message.append(TextSendMessage(text=info))
                 elif event.message.text=='刪除會員資料':
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).delete() #刪除
-                elif ('Line:'in event.message.text):
+                elif ('LINE:'in event.message.text):
                     message.append(TextSendMessage(text='輸入了LINE的密碼'))
                     x = event.message.text.split(":")
                     seaftermod = secretnum(x[1])
