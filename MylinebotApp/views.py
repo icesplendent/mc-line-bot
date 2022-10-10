@@ -171,16 +171,22 @@ def callback(request):
                     if (seaftermod==36):
                         message.append(TextSendMessage(text='密碼正確，增加點數'))
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
-                        new_points=0
-                        add_point=random.randrange(100,301,100)
-                        info = '恭喜增加...\n%s點'%(add_point)
-                        message.append(TextSendMessage(text=info))
                         for user in user_info:
-                            new_points = user.points + add_point
-                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
-                        for user in user_info:
-                            info = '現在點數points=%s'%(new_points)
-                            message.append(TextSendMessage(text=info))
+                            if(user.Line==1):
+                                info = '你已經拿過這個企業的點數了喔'
+                                message.append(TextSendMessage(text=info))
+                            else:
+                                new_points=0
+                                add_point=random.randrange(100,301,100)
+                                info = '恭喜增加...\n%s點'%(add_point)
+                                message.append(TextSendMessage(text=info))
+                                for user in user_info:
+                                    new_points = user.points + add_point
+                                    user.Line = 1
+                                User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
+                                for user in user_info:
+                                    info = '現在點數points=%s'%(new_points)
+                                    message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
                 elif ('tsmc:'in event.message.text):
