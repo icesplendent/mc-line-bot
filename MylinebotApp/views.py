@@ -386,6 +386,7 @@ def callback(request):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                         nxp_info = NXP.objects.all()
                         for user in user_info:
+                            flag = 0
                             for nxp in nxp_info:
                                 if(x[1]==nxp.password):
                                     flag=1
@@ -420,6 +421,7 @@ def callback(request):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                         hsinchu_info = Hsinchu.objects.all()
                         for user in user_info:
+                            flag = 0
                             for hsinchu in hsinchu_info:
                                 if(x[1]==hsinchu.password):
                                     flag=1
@@ -454,6 +456,7 @@ def callback(request):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                         kronos_info = Kronos.objects.all()
                         for user in user_info:
+                            flag = 0
                             for kronos in kronos_info:
                                 if(x[1]==kronos.password):
                                     flag=1
@@ -488,6 +491,7 @@ def callback(request):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                         cathay_info = Cathay.objects.all()
                         for user in user_info:
+                            flag = 0
                             for cathay in cathay_info:
                                 if(x[1]==cathay.password):
                                     flag=1
@@ -522,6 +526,7 @@ def callback(request):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                         ctbc_info = CTBC.objects.all()
                         for user in user_info:
+                            flag = 0
                             for ctbc in ctbc_info:
                                 if(x[1]==ctbc.password):
                                     flag=1
@@ -556,6 +561,7 @@ def callback(request):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url)
                         onezerofour_info = onezerofour.objects.all() 
                         for user in user_info:
+                            flag = 0
                             for onezerofour_ in onezerofour_info:
                                 if(x[1]==onezerofour_.password):
                                     flag=1
@@ -590,6 +596,7 @@ def callback(request):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
                         pixart_info = PixArt.objects.all() 
                         for user in user_info:
+                            flag = 0
                             for pixart in pixart_info:
                                 if(x[1]==pixart.password):
                                     flag=1
