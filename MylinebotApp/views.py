@@ -623,12 +623,10 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
-
-
-
-
-                #else:
-                    #message.append(TextSendMessage(text='再想想'))
+                elif ('企業位置圖' in event.message.text):
+                    message.append(TextSendMessage(text=''))
+                else:
+                    message.append(TextSendMessage(text='再想想'))
                 line_bot_api.reply_message(event.reply_token,message)
 
                 return HttpResponse()
