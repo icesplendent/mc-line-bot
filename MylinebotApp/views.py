@@ -203,7 +203,7 @@ def callback(request):
                         message.append(TextSendMessage(text=info))
                 elif event.message.text=='刪除會員資料':
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).delete() #刪除
-                elif ('LINE:'in event.message.text or 'LINE：'in event.message.text):
+                elif ('LINE:'in event.message.text or 'line:'in event.message.text or 'Line:'in event.message.text):
                     message.append(TextSendMessage(text='輸入了LINE的密碼'))
                     x = event.message.text.split(":")
                     seaftermod = secretnum(x[1])
