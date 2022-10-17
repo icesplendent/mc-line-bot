@@ -4,7 +4,7 @@ from django.contrib import admin
 from MylinebotApp.models import *
 
 class User_Info_Admin(admin.ModelAdmin):
-    list_display = ('uid','name','pic_url','mtext','mdt','points','STM','Yahoo','ASML','NXP','Hsinchu','Kronos','Cathay','CTBC','Line','tsmc','a104','Pixart')
+    list_display = ('uid','name','pic_url','mtext','mdt','lottery','points','STM','Yahoo','ASML','NXP','Hsinchu','Kronos','Cathay','CTBC','Line','tsmc','a104','Pixart')
     #list_display = ('uid','name','pic_url','mtext','mdt','points','lottery')
 admin.site.register(User_Info,User_Info_Admin)
 
