@@ -244,8 +244,17 @@ def callback(request):
                     seaftermod = secretnum(x[1])
                     if (seaftermod==25):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        tsmc_info = TSMC.objects.all()
                         for user in user_info:
-                            if(user.tsmc==1):
+                            flag = 0
+                            for tsmc in tsmc_info:
+                                if(x[1]==tsmc.password):
+                                    flag=1
+                                    break
+                            if(flag == 1):
+                                info = '這個企業密碼已被使用過'
+                                message.append(TextSendMessage(text=info))
+                            elif(user.tsmc==1):
                                 info = '你已經拿過這個企業的點數了喔'
                                 message.append(TextSendMessage(text=info))
                             else:
@@ -256,6 +265,7 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
+                                TSMC.objects.create(password=x[1])
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(tsmc=1) #修改
                                 for user in user_info:
@@ -269,8 +279,17 @@ def callback(request):
                     seaftermod = secretnum(x[1])
                     if (seaftermod==34):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        stm_info = STM.objects.all()
                         for user in user_info:
-                            if(user.STM==1):
+                            flag = 0
+                            for stm in stm_info:
+                                if(x[1]==stm.password):
+                                    flag=1
+                                    break
+                            if(flag == 1):
+                                info = '這個企業密碼已被使用過'
+                                message.append(TextSendMessage(text=info))
+                            elif(user.STM==1):
                                 info = '你已經拿過這個企業的點數了喔'
                                 message.append(TextSendMessage(text=info))
                             else:
@@ -281,6 +300,7 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
+                                STM.objects.create(password=x[1])
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(STM=1) #修改
                                 for user in user_info:
@@ -294,8 +314,17 @@ def callback(request):
                     seaftermod = secretnum(x[1])
                     if (seaftermod==32):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        yahoo_info = Yahoo.objects.all()
                         for user in user_info:
-                            if(user.Yahoo==1):
+                            flag = 0
+                            for yahoo in yahoo_info:
+                                if(x[1]==yahoo.password):
+                                    flag=1
+                                    break
+                            if(flag == 1):
+                                info = '這個企業密碼已被使用過'
+                                message.append(TextSendMessage(text=info))
+                            elif(user.Yahoo==1):
                                 info = '你已經拿過這個企業的點數了喔'
                                 message.append(TextSendMessage(text=info))
                             else:
@@ -306,6 +335,7 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
+                                Yahoo.objects.create(password=x[1])
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Yahoo=1) #修改
                                 for user in user_info:
@@ -319,8 +349,17 @@ def callback(request):
                     seaftermod = secretnum(x[1])
                     if (seaftermod==30):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        asml_info = ASML.objects.all()
                         for user in user_info:
-                            if(user.ASML==1):
+                            flag = 0
+                            for asml in asml_info:
+                                if(x[1]==asml.password):
+                                    flag=1
+                                    break
+                            if(flag == 1):
+                                info = '這個企業密碼已被使用過'
+                                message.append(TextSendMessage(text=info))
+                            elif(user.ASML==1):
                                 info = '你已經拿過這個企業的點數了喔'
                                 message.append(TextSendMessage(text=info))
                             else:
@@ -331,6 +370,7 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
+                                ASML.objects.create(password=x[1])
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(ASML=1) #修改
                                 for user in user_info:
@@ -344,8 +384,16 @@ def callback(request):
                     seaftermod = secretnum(x[1])
                     if (seaftermod==28):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        nxp_info = NXP.objects.all()
                         for user in user_info:
-                            if(user.NXP==1):
+                            for nxp in nxp_info:
+                                if(x[1]==nxp.password):
+                                    flag=1
+                                    break
+                            if(flag == 1):
+                                info = '這個企業密碼已被使用過'
+                                message.append(TextSendMessage(text=info))
+                            elif(user.NXP==1):
                                 info = '你已經拿過這個企業的點數了喔'
                                 message.append(TextSendMessage(text=info))
                             else:
@@ -356,6 +404,7 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
+                                NXP.objects.create(password=x[1])
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(NXP=1) #修改
                                 for user in user_info:
@@ -369,8 +418,16 @@ def callback(request):
                     seaftermod = secretnum(x[1])
                     if (seaftermod==26):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        hsinchu_info = Hsinchu.objects.all()
                         for user in user_info:
-                            if(user.Hsinchu==1):
+                            for hsinchu in hsinchu_info:
+                                if(x[1]==hsinchu.password):
+                                    flag=1
+                                    break
+                            if(flag == 1):
+                                info = '這個企業密碼已被使用過'
+                                message.append(TextSendMessage(text=info))
+                            elif(user.Hsinchu==1):
                                 info = '你已經拿過這個企業的點數了喔'
                                 message.append(TextSendMessage(text=info))
                             else:
@@ -381,6 +438,7 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
+                                Hsinchu.objects.create(password=x[1])
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Hsinchu=1) #修改
                                 for user in user_info:
@@ -394,8 +452,16 @@ def callback(request):
                     seaftermod = secretnum(x[1])
                     if (seaftermod==24):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        kronos_info = Kronos.objects.all()
                         for user in user_info:
-                            if(user.Kronos==1):
+                            for kronos in kronos_info:
+                                if(x[1]==kronos.password):
+                                    flag=1
+                                    break
+                            if(flag == 1):
+                                info = '這個企業密碼已被使用過'
+                                message.append(TextSendMessage(text=info))
+                            elif(user.Kronos==1):
                                 info = '你已經拿過這個企業的點數了喔'
                                 message.append(TextSendMessage(text=info))
                             else:
@@ -406,6 +472,7 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
+                                Kronos.objects.create(password=x[1])
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Kronos=1) #修改
                                 for user in user_info:
@@ -419,8 +486,16 @@ def callback(request):
                     seaftermod = secretnum(x[1])
                     if (seaftermod==22):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        cathay_info = Cathay.objects.all()
                         for user in user_info:
-                            if(user.Cathay==1):
+                            for cathay in cathay_info:
+                                if(x[1]==cathay.password):
+                                    flag=1
+                                    break
+                            if(flag == 1):
+                                info = '這個企業密碼已被使用過'
+                                message.append(TextSendMessage(text=info))
+                            elif(user.Cathay==1):
                                 info = '你已經拿過這個企業的點數了喔'
                                 message.append(TextSendMessage(text=info))
                             else:
@@ -431,6 +506,7 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
+                                Cathay.objects.create(password=x[1])
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Cathay=1) #修改
                                 for user in user_info:
@@ -444,8 +520,16 @@ def callback(request):
                     seaftermod = secretnum(x[1])
                     if (seaftermod==20):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        ctbc_info = CTBC.objects.all()
                         for user in user_info:
-                            if(user.CTBC==1):
+                            for ctbc in ctbc_info:
+                                if(x[1]==ctbc.password):
+                                    flag=1
+                                    break
+                            if(flag == 1):
+                                info = '這個企業密碼已被使用過'
+                                message.append(TextSendMessage(text=info))
+                            elif(user.CTBC==1):
                                 info = '你已經拿過這個企業的點數了喔'
                                 message.append(TextSendMessage(text=info))
                             else:
@@ -456,6 +540,7 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
+                                CTBC.objects.create(password=x[1])
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(CTBC=1) #修改
                                 for user in user_info:
@@ -468,9 +553,17 @@ def callback(request):
                     x = event.message.text.split(":")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==16):
-                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url)
+                        onezerofour_info = onezerofour.objects.all() 
                         for user in user_info:
-                            if(user.a104==1):
+                            for onezerofour_ in onezerofour_info:
+                                if(x[1]==onezerofour_.password):
+                                    flag=1
+                                    break
+                            if(flag == 1):
+                                info = '這個企業密碼已被使用過'
+                                message.append(TextSendMessage(text=info))
+                            elif(user.a104==1):
                                 info = '你已經拿過這個企業的點數了喔'
                                 message.append(TextSendMessage(text=info))
                             else:
@@ -481,6 +574,7 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
+                                onezerofour.objects.create(password=x[1])
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(a104=1) #修改
                                 for user in user_info:
@@ -494,8 +588,16 @@ def callback(request):
                     seaftermod = secretnum(x[1])
                     if (seaftermod==19):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        pixart_info = PixArt.objects.all() 
                         for user in user_info:
-                            if(user.Pixart==1):
+                            for pixart in pixart_info:
+                                if(x[1]==pixart.password):
+                                    flag=1
+                                    break
+                            if(flag == 1):
+                                info = '這個企業密碼已被使用過'
+                                message.append(TextSendMessage(text=info))
+                            elif(user.Pixart==1):
                                 info = '你已經拿過這個企業的點數了喔'
                                 message.append(TextSendMessage(text=info))
                             else:
@@ -506,6 +608,7 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
+                                PixArt.objects.create(password=x[1])
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Pixart=1) #修改
                                 for user in user_info:
