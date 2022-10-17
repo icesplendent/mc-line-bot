@@ -205,7 +205,7 @@ def callback(request):
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).delete() #刪除
                 elif ('LINE:'in event.message.text or 'line:'in event.message.text or 'Line:'in event.message.text):
                     message.append(TextSendMessage(text='輸入了LINE的密碼'))
-                    x = ""
+                    x = []
                     if ':' in event.message.text:
                         x = event.message.text.split(":")
                     elif '：' in event.message.text:
