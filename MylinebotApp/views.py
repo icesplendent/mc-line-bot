@@ -99,8 +99,8 @@ def callback(request):
                         message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
                         User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(lottery=1) 
                         image_message = ImageSendMessage(
-                            original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/309748365_100109239563436_8451180494723915841_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=Qavv28yRbyMAX_BPpN1&tn=FKUeTQCsg2KYCGQ3&_nc_ht=scontent-tpe1-1.xx&oh=00_AT8kyuCPH5igOe4uM7QHKr12SjUqTmoITiuXdZSbb46sVQ&oe=63488F97',
-                            preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/309748365_100109239563436_8451180494723915841_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=Qavv28yRbyMAX_BPpN1&tn=FKUeTQCsg2KYCGQ3&_nc_ht=scontent-tpe1-1.xx&oh=00_AT8kyuCPH5igOe4uM7QHKr12SjUqTmoITiuXdZSbb46sVQ&oe=63488F97'
+                            original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/309748365_100109239563436_8451180494723915841_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=JeBPg5X4tJoAX-LV4aw&_nc_ht=scontent-tpe1-1.xx&oh=00_AT_dfhvWzgM7az0i5Z6Fq7hVDz0D_vORcZhw2cSlPNwljg&oe=635272D7',
+                            preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/309748365_100109239563436_8451180494723915841_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=JeBPg5X4tJoAX-LV4aw&_nc_ht=scontent-tpe1-1.xx&oh=00_AT_dfhvWzgM7az0i5Z6Fq7hVDz0D_vORcZhw2cSlPNwljg&oe=635272D7'
                         )
                         message.append(image_message) #輸出抽獎卷 
                 elif event.message.text=='確定兌換 Level 2 抽獎卷':
@@ -112,6 +112,14 @@ def callback(request):
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                     for user in user_info:
                         info = 'points=%s'%(new_points)
+                        message.append(TextSendMessage(text=info)) #輸出
+                    flag = 0
+                    for user in user_info:
+                        if user.lottery==1:
+                            flag=1
+                            break
+                    if flag==1:
+                        info = '您已兌換過抽獎卷'
                         message.append(TextSendMessage(text=info)) #輸出
                     if new_points < 0 :
                         message.append(TextSendMessage(text='喔不你的錢錢不夠，不能兌換抽獎卷喔'))
