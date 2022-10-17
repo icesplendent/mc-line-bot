@@ -209,7 +209,7 @@ def callback(request):
                     if ':' in event.message.text:
                         x = event.message.text.split(":")
                     elif '：' in event.message.text:
-                        x = event.message.text.split(":")
+                        x = event.message.text.split("：")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==36):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
