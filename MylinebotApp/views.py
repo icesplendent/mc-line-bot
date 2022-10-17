@@ -66,7 +66,7 @@ def callback(request):
                 elif event.message.text=='查看黑客松幣總額':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url)
                     for user in user_info:
-                        info = 'points=%s'%(user.points)
+                        info = '\U001F385points=%s'%(user.points)
                         message.append(TextSendMessage(text=info))
 
                 elif event.message.text=='確定兌換 Level 1 抽獎卷':
