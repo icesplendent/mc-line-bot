@@ -242,9 +242,13 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
-                elif ('TSMC:'in event.message.text):
+                elif ('TSMC:'in event.message.text or 'tsmc:'in event.message.text or 'Tsmc:'in event.message.text or 'TSMC：'in event.message.text or 'tsmc：'in event.message.text or 'Tsmc：'in event.message.text):
                     message.append(TextSendMessage(text='輸入了TSMC台積電的密碼'))
-                    x = event.message.text.split(":")
+                    x = []
+                    if ':' in event.message.text:
+                        x = event.message.text.split(":")
+                    elif '：' in event.message.text:
+                        x = event.message.text.split("：")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==25):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
@@ -277,9 +281,13 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
-                elif ('STM:'in event.message.text):
+                elif ('STM:'in event.message.text or 'stm:'in event.message.text or 'Stm:'in event.message.text or 'STM：'in event.message.text or 'stm：'in event.message.text or 'Stm：'in event.message.text):
                     message.append(TextSendMessage(text='輸入了意法半導體的密碼'))
-                    x = event.message.text.split(":")
+                    x = []
+                    if ':' in event.message.text:
+                        x = event.message.text.split(":")
+                    elif '：' in event.message.text:
+                        x = event.message.text.split("：")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==34):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
@@ -312,9 +320,13 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))                    
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
-                elif ('Yahoo:'in event.message.text):
+                elif ('Yahoo:'in event.message.text or 'YAHOO:'in event.message.text or 'yahoo:'in event.message.text or 'Yahoo：'in event.message.text or 'YAHOO：'in event.message.text or 'yahoo：'in event.message.text):
                     message.append(TextSendMessage(text='輸入了Yahoo的密碼'))
-                    x = event.message.text.split(":")
+                    x = []
+                    if ':' in event.message.text:
+                        x = event.message.text.split(":")
+                    elif '：' in event.message.text:
+                        x = event.message.text.split("：")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==32):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
@@ -347,9 +359,13 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
-                elif ('ASML:'in event.message.text):
+                elif ('ASML:'in event.message.text or 'asml:'in event.message.text or 'Asml:'in event.message.text or 'ASML：'in event.message.text or 'asml：'in event.message.text or 'Asml：'in event.message.text ):
                     message.append(TextSendMessage(text='輸入了ASML艾司摩爾的密碼'))
-                    x = event.message.text.split(":")
+                    x = []
+                    if ':' in event.message.text:
+                        x = event.message.text.split(":")
+                    elif '：' in event.message.text:
+                        x = event.message.text.split("：")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==30):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
@@ -382,9 +398,13 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
-                elif ('NXP:'in event.message.text):
+                elif ('NXP:'in event.message.text or 'nxp:'in event.message.text or 'Nxp:'in event.message.text or 'NXP：'in event.message.text or 'nxp：'in event.message.text or 'Nxp：'in event.message.text):
                     message.append(TextSendMessage(text='輸入了恩智浦半導體的密碼'))
-                    x = event.message.text.split(":")
+                    x = []
+                    if ':' in event.message.text:
+                        x = event.message.text.split(":")
+                    elif '：' in event.message.text:
+                        x = event.message.text.split("：")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==28):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
@@ -417,9 +437,13 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
-                elif ('Hsinchu:'in event.message.text):
+                elif ('Hsinchu:'in event.message.text or 'HSINCHU:'in event.message.text or 'hsinchu:'in event.message.text or 'Hsinchu：'in event.message.text or 'HSINCHU：'in event.message.text or 'hsinchu：'in event.message.text):
                     message.append(TextSendMessage(text='輸入了新竹市政府的密碼'))
-                    x = event.message.text.split(":")
+                    x = []
+                    if ':' in event.message.text:
+                        x = event.message.text.split(":")
+                    elif '：' in event.message.text:
+                        x = event.message.text.split("：")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==26):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
@@ -452,9 +476,13 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
-                elif ('Kronos:'in event.message.text):
+                elif ('Kronos:'in event.message.text or 'KRONOS:'in event.message.text or 'kronos:'in event.message.text or 'Kronos：'in event.message.text or 'KRONOS：'in event.message.text or 'kronos：'in event.message.text):
                     message.append(TextSendMessage(text='輸入了Kronos Research麒點科技的密碼'))
-                    x = event.message.text.split(":")
+                    x = []
+                    if ':' in event.message.text:
+                        x = event.message.text.split(":")
+                    elif '：' in event.message.text:
+                        x = event.message.text.split("：")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==24):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
@@ -487,9 +515,13 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
-                elif ('Cathay:'in event.message.text):
+                elif ('Cathay:'in event.message.text or 'CATHAY:'in event.message.text or 'cathay:'in event.message.text or 'Cathay：'in event.message.text or 'CATHAY：'in event.message.text or 'cathay：'in event.message.text):
                     message.append(TextSendMessage(text='輸入了國泰金控的密碼'))
-                    x = event.message.text.split(":")
+                    x = []
+                    if ':' in event.message.text:
+                        x = event.message.text.split(":")
+                    elif '：' in event.message.text:
+                        x = event.message.text.split("：")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==22):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
@@ -522,9 +554,13 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
-                elif ('CTBC:'in event.message.text):
+                elif ('CTBC:'in event.message.text or 'ctbc:'in event.message.text or 'Ctbc:'in event.message.text or 'CTBC：'in event.message.text or 'ctbc：'in event.message.text or 'Ctbc：'in event.message.text):
                     message.append(TextSendMessage(text='輸入了中國信託的密碼'))
-                    x = event.message.text.split(":")
+                    x = []
+                    if ':' in event.message.text:
+                        x = event.message.text.split(":")
+                    elif '：' in event.message.text:
+                        x = event.message.text.split("：")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==20):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
@@ -557,9 +593,13 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
-                elif ('104:'in event.message.text):
+                elif ('104:'in event.message.text or '104：'in event.message.text):
                     message.append(TextSendMessage(text='輸入了一零四資訊科技的密碼'))
-                    x = event.message.text.split(":")
+                    x = []
+                    if ':' in event.message.text:
+                        x = event.message.text.split(":")
+                    elif '：' in event.message.text:
+                        x = event.message.text.split("：")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==16):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url)
@@ -592,9 +632,13 @@ def callback(request):
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
-                elif ('PixArt:'in event.message.text):
+                elif ('PixArt:'in event.message.text or 'PIXART:'in event.message.text or 'pixart:'in event.message.text or 'PixArt：'in event.message.text or 'PIXART：'in event.message.text or 'pixart：'in event.message.text):
                     message.append(TextSendMessage(text='輸入了原相科技的密碼'))
-                    x = event.message.text.split(":")
+                    x = []
+                    if ':' in event.message.text:
+                        x = event.message.text.split(":")
+                    elif '：' in event.message.text:
+                        x = event.message.text.split("：")
                     seaftermod = secretnum(x[1])
                     if (seaftermod==19):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
