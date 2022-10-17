@@ -121,7 +121,7 @@ def callback(request):
                     if flag==1:
                         info = '您已兌換過抽獎卷'
                         message.append(TextSendMessage(text=info)) #輸出
-                    if new_points < 0 :
+                    elif new_points < 0 :
                         message.append(TextSendMessage(text='喔不你的錢錢不夠，不能兌換抽獎卷喔'))
                         for user in user_info:
                             new_points = user.points 
@@ -131,6 +131,7 @@ def callback(request):
                             message.append(TextSendMessage(text=info)) #輸出
                     else :
                         message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
+                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(lottery=1) 
                         image_message = ImageSendMessage(
                             original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/310650538_100111356229891_866083673074835272_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=sBh92GOoEZEAX9jLhXA&_nc_ht=scontent-tpe1-1.xx&oh=00_AT9W8J2WayEdXWy9TAFDuhGBSLhUV5aApHOxtTgBRzP--w&oe=6348C5DC',
                             preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/310650538_100111356229891_866083673074835272_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=sBh92GOoEZEAX9jLhXA&_nc_ht=scontent-tpe1-1.xx&oh=00_AT9W8J2WayEdXWy9TAFDuhGBSLhUV5aApHOxtTgBRzP--w&oe=6348C5DC'
@@ -146,7 +147,15 @@ def callback(request):
                     for user in user_info:
                         info = 'points=%s'%(new_points)
                         message.append(TextSendMessage(text=info)) #輸出
-                    if new_points < 0 :
+                    flag = 0
+                    for user in user_info:
+                        if user.lottery==1:
+                            flag=1
+                            break
+                    if flag==1:
+                        info = '您已兌換過抽獎卷'
+                        message.append(TextSendMessage(text=info)) #輸出
+                    elif new_points < 0 :
                         message.append(TextSendMessage(text='喔不你的錢錢不夠，不能兌換抽獎卷喔'))
                         for user in user_info:
                             new_points = user.points 
@@ -156,6 +165,7 @@ def callback(request):
                             message.append(TextSendMessage(text=info)) #輸出
                     else :
                         message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
+                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(lottery=1) 
                         image_message = ImageSendMessage(
                             original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/310107356_100111389563221_7983913375440295230_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=HlbIuzWPm2cAX-OFoNS&_nc_ht=scontent-tpe1-1.xx&oh=00_AT8ONPkzekx0MG9BmPzkEXOGewMLbAKF7ErsPBIPnLS6Tw&oe=634961A8',
                             preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/310107356_100111389563221_7983913375440295230_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=HlbIuzWPm2cAX-OFoNS&_nc_ht=scontent-tpe1-1.xx&oh=00_AT8ONPkzekx0MG9BmPzkEXOGewMLbAKF7ErsPBIPnLS6Tw&oe=634961A8'
