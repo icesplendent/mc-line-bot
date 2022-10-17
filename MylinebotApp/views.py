@@ -167,13 +167,13 @@ def callback(request):
                     seaftermod = secretnum(x[1])
                     if (seaftermod==36):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
-                        line_info = LINE.objects.all()
+                        # line_info = LINE.objects.all()
                         for user in user_info:
                             flag = 0
-                            for line in line_info:
-                                if(x[1]==line.password):
-                                    flag=1
-                                    break
+                            # for line in line_info:
+                            #     if(x[1]==line.password):
+                            #         flag=1
+                            #         break
                             if(flag == 1):
                                 info = '這個企業密碼已被使用過'
                                 message.append(TextSendMessage(text=info))
