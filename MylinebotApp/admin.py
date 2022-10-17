@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from mylinebotapp.models import *
+from MylinebotApp.models import *
 
 class User_Info_Admin(admin.ModelAdmin):
     list_display = ('uid','name','pic_url','mtext','mdt','points','STM','Yahoo','ASML','NXP','Hsinchu','Kronos','Cathay','CTBC','Line','tsmc','a104','Pixart')
