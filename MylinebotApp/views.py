@@ -203,7 +203,7 @@ def callback(request):
                         message.append(TextSendMessage(text=info))
                 elif event.message.text=='刪除會員資料':
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).delete() #刪除
-                elif ('LINE:'in event.message.text):
+                elif ('LINE:'in event.message.text or 'LINE：'in event.message.text):
                     message.append(TextSendMessage(text='輸入了LINE的密碼'))
                     x = event.message.text.split(":")
                     seaftermod = secretnum(x[1])
@@ -625,8 +625,20 @@ def callback(request):
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
                 elif ('企業位置圖' in event.message.text):
                     message.append(TextSendMessage(text=''))
+                elif ('購買抽獎卷' in event.message.text):
+                    message.append(TextSendMessage(text=''))
+                elif ('企業任務總覽' in event.message.text):
+                    message.append(TextSendMessage(text=''))
+                elif ('活動規則' in event.message.text):
+                    message.append(TextSendMessage(text=''))
+                elif ('查看Level 1獎品清單' in event.message.text):
+                    message.append(TextSendMessage(text=''))
+                elif ('查看Level 2獎品清單' in event.message.text):
+                    message.append(TextSendMessage(text=''))
+                elif ('查看Level 3獎品清單' in event.message.text):
+                    message.append(TextSendMessage(text=''))
                 else:
-                    message.append(TextSendMessage(text='再想想'))
+                    message.append(TextSendMessage(text='輸入格式錯誤'))
                 line_bot_api.reply_message(event.reply_token,message)
 
                 return HttpResponse()
