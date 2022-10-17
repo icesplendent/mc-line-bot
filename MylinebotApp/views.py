@@ -86,6 +86,7 @@ def callback(request):
                             break
                     if flag==1:
                         info = '您已兌換過抽獎卷'
+                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改回原本的
                         message.append(TextSendMessage(text=info)) #輸出
                     elif new_points < 0 :
                         message.append(TextSendMessage(text='喔不你的錢錢不夠，不能兌換抽獎卷喔'))
@@ -120,6 +121,7 @@ def callback(request):
                             break
                     if flag==1:
                         info = '您已兌換過抽獎卷'
+                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改回原本的
                         message.append(TextSendMessage(text=info)) #輸出
                     elif new_points < 0 :
                         message.append(TextSendMessage(text='喔不你的錢錢不夠，不能兌換抽獎卷喔'))
@@ -154,6 +156,7 @@ def callback(request):
                             break
                     if flag==1:
                         info = '您已兌換過抽獎卷'
+                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改回原本的
                         message.append(TextSendMessage(text=info)) #輸出
                     elif new_points < 0 :
                         message.append(TextSendMessage(text='喔不你的錢錢不夠，不能兌換抽獎卷喔'))
