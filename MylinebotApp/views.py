@@ -167,8 +167,17 @@ def callback(request):
                     seaftermod = secretnum(x[1])
                     if (seaftermod==36):
                         user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                        line_info = LINE.objects
                         for user in user_info:
-                            if(user.Line==1):
+                            flag = 0
+                            for line in line_info:
+                                if(x[1]==line.password):
+                                    flag=1
+                                    break
+                            if(flag==1):
+                                info = '這個企業密碼已被使用過'
+                                message.append(TextSendMessage(text=info))
+                            elif(user.Line==1):
                                 info = '你已經拿過這個企業的點數了喔'
                                 message.append(TextSendMessage(text=info))
                             else:
@@ -179,6 +188,7 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
+                                line_info.objects.create(password=x[1])
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Line=1) #修改
                                 for user in user_info:
