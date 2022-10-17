@@ -57,12 +57,12 @@ def callback(request):
                 points=0
 
                 message=[]
-                if event.message.text=='開始遊戲':
-                    if User_Info.objects.filter(uid=uid).exists()==False:
-                        User_Info.objects.create(uid=uid,name=name,pic_url=pic_url,mtext=mtext,points=points)
-                        message.append(TextSendMessage(text='註冊成功'))
-                    else:
-                        message.append(TextSendMessage(text='已註冊'))
+                #if event.message.text=='開始遊戲':
+                if User_Info.objects.filter(uid=uid).exists()==False:
+                    User_Info.objects.create(uid=uid,name=name,pic_url=pic_url,mtext=mtext,points=points)
+                    #message.append(TextSendMessage(text='註冊成功'))
+                    #else:
+                        #message.append(TextSendMessage(text='已註冊'))
                 elif event.message.text=='查看黑客松幣總額':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url)
                     for user in user_info:
