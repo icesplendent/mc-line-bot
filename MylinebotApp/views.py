@@ -170,11 +170,13 @@ def callback(request):
                         line_info = LINE.objects
                         for user in user_info:
                             flag = 0
+                            info = '這個企業密碼已被使用過'
+                            message.append(TextSendMessage(text=info))
                             for line in line_info:
                                 if(x[1]==line.password):
                                     flag=1
                                     break
-                            if(flag==1):
+                            if(flag == 1):
                                 info = '這個企業密碼已被使用過'
                                 message.append(TextSendMessage(text=info))
                             elif(user.Line==1):
