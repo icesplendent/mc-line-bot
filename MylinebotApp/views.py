@@ -188,7 +188,7 @@ def callback(request):
                                 message.append(TextSendMessage(text=info))
                                 for user in user_info:
                                     new_points = user.points + add_point
-                                line_info.objects.create(password=x[1])
+                                LINE.objects.create(password=x[1])
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Line=1) #修改
                                 for user in user_info:
