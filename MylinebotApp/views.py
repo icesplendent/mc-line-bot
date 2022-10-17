@@ -71,10 +71,12 @@ def callback(request):
 
                 elif event.message.text=='確定兌換 Level 1 抽獎卷':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                    original_point=0
                     new_points=0
                     less_point=1200
                     for user in user_info:
                         new_points = user.points - less_point
+                        original_point = user.points
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                     for user in user_info:
                         info = 'points=%s'%(new_points)
@@ -88,7 +90,7 @@ def callback(request):
                         info = '您已兌換過抽獎卷'
                         for user in user_info:
                             new_points = user.points 
-                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改回原本的
+                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=original_point) #修改回原本的
                         message.append(TextSendMessage(text=info)) #輸出
                     elif new_points < 0 :
                         message.append(TextSendMessage(text='喔不你的錢錢不夠，不能兌換抽獎卷喔'))
@@ -108,10 +110,12 @@ def callback(request):
                         message.append(image_message) #輸出抽獎卷 
                 elif event.message.text=='確定兌換 Level 2 抽獎卷':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                    original_point=0
                     new_points=0
                     less_point=1900
                     for user in user_info:
                         new_points = user.points - less_point
+                        original_point = user.points
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                     for user in user_info:
                         info = 'points=%s'%(new_points)
@@ -125,7 +129,7 @@ def callback(request):
                         info = '您已兌換過抽獎卷'
                         for user in user_info:
                             new_points = user.points 
-                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改回原本的
+                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=original_point) #修改回原本的
                         message.append(TextSendMessage(text=info)) #輸出
                     elif new_points < 0 :
                         message.append(TextSendMessage(text='喔不你的錢錢不夠，不能兌換抽獎卷喔'))
@@ -145,10 +149,12 @@ def callback(request):
                         message.append(image_message) #輸出抽獎卷
                 elif event.message.text=='確定兌換 Level 3 抽獎卷':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url) 
+                    original_point = 0
                     new_points=0
                     less_point=2500
                     for user in user_info:
                         new_points = user.points - less_point
+                        original_point = user.points
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                     for user in user_info:
                         info = 'points=%s'%(new_points)
@@ -162,7 +168,7 @@ def callback(request):
                         info = '您已兌換過抽獎卷'
                         for user in user_info:
                             new_points = user.points 
-                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改回原本的
+                        User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=original_point) #修改回原本的
                         message.append(TextSendMessage(text=info)) #輸出
                     elif new_points < 0 :
                         message.append(TextSendMessage(text='喔不你的錢錢不夠，不能兌換抽獎卷喔'))
