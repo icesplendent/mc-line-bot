@@ -31,6 +31,7 @@ SECRET_KEY = 'django-insecure-rp8ctfhuyu_32ai4i)s)j^=b%k=8yq*%1n3)tx=m%o!5g__3dt
 DEBUG = True
 
 ALLOWED_HOSTS = ['https://linebotapp2022.herokuapp.com/']
+#ALLOWED_HOSTS = ['*']
 
 
 # Application definition

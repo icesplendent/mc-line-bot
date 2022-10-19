@@ -66,7 +66,7 @@ def callback(request):
                 elif event.message.text=='查看黑客松幣總額':
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url)
                     for user in user_info:
-                        info = '\U0001F385points=%s'%(user.points)
+                        info = '\U0001F385你的黑客松幣=%s'%(user.points)
                         message.append(TextSendMessage(text=info))
 
                 elif event.message.text=='確定兌換 Level 1 抽獎卷':
@@ -104,8 +104,8 @@ def callback(request):
                         message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
                         User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(lottery=1) 
                         image_message = ImageSendMessage(
-                            original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/309748365_100109239563436_8451180494723915841_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=JeBPg5X4tJoAX-LV4aw&_nc_ht=scontent-tpe1-1.xx&oh=00_AT_dfhvWzgM7az0i5Z6Fq7hVDz0D_vORcZhw2cSlPNwljg&oe=635272D7',
-                            preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/309748365_100109239563436_8451180494723915841_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=JeBPg5X4tJoAX-LV4aw&_nc_ht=scontent-tpe1-1.xx&oh=00_AT_dfhvWzgM7az0i5Z6Fq7hVDz0D_vORcZhw2cSlPNwljg&oe=635272D7'
+                            original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/311260763_104695532438140_8784150806900176898_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=OjkIHkMC6CcAX8XJTXM&_nc_ht=scontent-tpe1-1.xx&oh=00_AT9-ieCIdJZU9v8Dn5ugfgFdUzZvV73KgBXvnh4bQH2ZOw&oe=63558337',
+                            preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/311260763_104695532438140_8784150806900176898_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=OjkIHkMC6CcAX8XJTXM&_nc_ht=scontent-tpe1-1.xx&oh=00_AT9-ieCIdJZU9v8Dn5ugfgFdUzZvV73KgBXvnh4bQH2ZOw&oe=63558337'
                         )
                         message.append(image_message) #輸出抽獎卷 
                 elif event.message.text=='確定兌換 Level 2 抽獎卷':
@@ -143,8 +143,8 @@ def callback(request):
                         message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
                         User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(lottery=1) 
                         image_message = ImageSendMessage(
-                            original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/310650538_100111356229891_866083673074835272_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=sBh92GOoEZEAX9jLhXA&_nc_ht=scontent-tpe1-1.xx&oh=00_AT9W8J2WayEdXWy9TAFDuhGBSLhUV5aApHOxtTgBRzP--w&oe=6348C5DC',
-                            preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/310650538_100111356229891_866083673074835272_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=sBh92GOoEZEAX9jLhXA&_nc_ht=scontent-tpe1-1.xx&oh=00_AT9W8J2WayEdXWy9TAFDuhGBSLhUV5aApHOxtTgBRzP--w&oe=6348C5DC'
+                            original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/311833481_104696019104758_5795713764810911910_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=GqQiiHt_WdQAX_jP7YF&tn=FKUeTQCsg2KYCGQ3&_nc_ht=scontent-tpe1-1.xx&oh=00_AT9Z6mfTysnSXCrYiOK9DqABLG0UvKoNFLNB0ExbJ_e8pg&oe=6354D555',
+                            preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/311833481_104696019104758_5795713764810911910_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=GqQiiHt_WdQAX_jP7YF&tn=FKUeTQCsg2KYCGQ3&_nc_ht=scontent-tpe1-1.xx&oh=00_AT9Z6mfTysnSXCrYiOK9DqABLG0UvKoNFLNB0ExbJ_e8pg&oe=6354D555'
                         )
                         message.append(image_message) #輸出抽獎卷
                 elif event.message.text=='確定兌換 Level 3 抽獎卷':
@@ -157,7 +157,7 @@ def callback(request):
                         original_point = user.points
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                     for user in user_info:
-                        info = 'points=%s'%(new_points)
+                        info = '兌換完抽獎卷後，你的黑客松幣=%s'%(new_points)
                         message.append(TextSendMessage(text=info)) #輸出
                     flag = 0
                     for user in user_info:
@@ -176,14 +176,14 @@ def callback(request):
                             new_points = user.points 
                         User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改回原本的
                         for user in user_info:
-                            info = 'points=%s'%(new_points)
+                            info = '現在黑客松幣數=%s'%(new_points)
                             message.append(TextSendMessage(text=info)) #輸出
                     else :
                         message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
                         User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(lottery=1) 
                         image_message = ImageSendMessage(
-                            original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/310107356_100111389563221_7983913375440295230_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=HlbIuzWPm2cAX-OFoNS&_nc_ht=scontent-tpe1-1.xx&oh=00_AT8ONPkzekx0MG9BmPzkEXOGewMLbAKF7ErsPBIPnLS6Tw&oe=634961A8',
-                            preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/310107356_100111389563221_7983913375440295230_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=HlbIuzWPm2cAX-OFoNS&_nc_ht=scontent-tpe1-1.xx&oh=00_AT8ONPkzekx0MG9BmPzkEXOGewMLbAKF7ErsPBIPnLS6Tw&oe=634961A8'
+                            original_content_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/311605785_104696382438055_2392417563507812056_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=730e14&_nc_ohc=kJvz63HCxEgAX-6LxvL&_nc_ht=scontent-tpe1-1.xx&oh=00_AT9D3GR2ZPLGX_2AsDsUv1S4DShWn4PB9_aiTPB1taJ_JQ&oe=6355FB28',
+                            preview_image_url='https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/311605785_104696382438055_2392417563507812056_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=730e14&_nc_ohc=kJvz63HCxEgAX-6LxvL&_nc_ht=scontent-tpe1-1.xx&oh=00_AT9D3GR2ZPLGX_2AsDsUv1S4DShWn4PB9_aiTPB1taJ_JQ&oe=6355FB28'
                         )
                         message.append(image_message) #輸出抽獎卷
                 elif event.message.text=='輸出會員資料':
@@ -238,7 +238,7 @@ def callback(request):
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Line=1) #修改
                                 for user in user_info:
-                                    info = '現在點數points=%s'%(new_points)
+                                    info = '現在你的黑客松幣=%s'%(new_points)
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
@@ -277,7 +277,7 @@ def callback(request):
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(tsmc=1) #修改
                                 for user in user_info:
-                                    info = '現在點數points=%s'%(new_points)
+                                    info = '現在你的黑客松幣=%s'%(new_points)
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
@@ -316,7 +316,7 @@ def callback(request):
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(STM=1) #修改
                                 for user in user_info:
-                                    info = '現在點數points=%s'%(new_points)
+                                    info = '現在你的黑客松幣=%s'%(new_points)
                                     message.append(TextSendMessage(text=info))                    
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
@@ -355,7 +355,7 @@ def callback(request):
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Yahoo=1) #修改
                                 for user in user_info:
-                                    info = '現在點數points=%s'%(new_points)
+                                    info = '現在你的黑客松幣=%s'%(new_points)
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
@@ -394,7 +394,7 @@ def callback(request):
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(ASML=1) #修改
                                 for user in user_info:
-                                    info = '現在點數points=%s'%(new_points)
+                                    info = '現在你的黑客松幣=%s'%(new_points)
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
@@ -433,7 +433,7 @@ def callback(request):
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(NXP=1) #修改
                                 for user in user_info:
-                                    info = '現在點數points=%s'%(new_points)
+                                    info = '現在你的黑客松幣=%s'%(new_points)
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
@@ -472,7 +472,7 @@ def callback(request):
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Hsinchu=1) #修改
                                 for user in user_info:
-                                    info = '現在點數points=%s'%(new_points)
+                                    info = '現在你的黑客松幣=%s'%(new_points)
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
@@ -511,7 +511,7 @@ def callback(request):
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Kronos=1) #修改
                                 for user in user_info:
-                                    info = '現在點數points=%s'%(new_points)
+                                    info = '現在你的黑客松幣=%s'%(new_points)
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
@@ -550,7 +550,7 @@ def callback(request):
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Cathay=1) #修改
                                 for user in user_info:
-                                    info = '現在點數points=%s'%(new_points)
+                                    info = '現在你的黑客松幣=%s'%(new_points)
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
@@ -589,7 +589,7 @@ def callback(request):
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(CTBC=1) #修改
                                 for user in user_info:
-                                    info = '現在點數points=%s'%(new_points)
+                                    info = '現在你的黑客松幣=%s'%(new_points)
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
@@ -628,7 +628,7 @@ def callback(request):
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(a104=1) #修改
                                 for user in user_info:
-                                    info = '現在點數points=%s'%(new_points)
+                                    info = '現在你的黑客松幣=%s'%(new_points)
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
@@ -667,7 +667,7 @@ def callback(request):
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                                 User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(Pixart=1) #修改
                                 for user in user_info:
-                                    info = '現在點數points=%s'%(new_points)
+                                    info = '現在你的黑客松幣=%s'%(new_points)
                                     message.append(TextSendMessage(text=info))
                     else:
                         message.append(TextSendMessage(text='密碼錯誤，再試試看'))
