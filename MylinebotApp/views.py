@@ -79,7 +79,7 @@ def callback(request):
                         original_point = user.points
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                     for user in user_info:
-                        info = 'points=%s'%(new_points)
+                        info = '兌換完抽獎卷後，你的黑客松幣=%s'%(new_points)
                         message.append(TextSendMessage(text=info)) #輸出
                     flag = 0
                     for user in user_info:
@@ -98,7 +98,7 @@ def callback(request):
                             new_points = user.points 
                         User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改回原本的
                         for user in user_info:
-                            info = 'points=%s'%(new_points)
+                            info = '剩餘黑客松幣數=%s'%(new_points)
                             message.append(TextSendMessage(text=info)) #輸出
                     else :
                         message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
@@ -118,7 +118,7 @@ def callback(request):
                         original_point = user.points
                     User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改
                     for user in user_info:
-                        info = 'points=%s'%(new_points)
+                        info = '兌換完抽獎卷後，你的黑客松幣=%s'%(new_points)
                         message.append(TextSendMessage(text=info)) #輸出
                     flag = 0
                     for user in user_info:
@@ -137,7 +137,7 @@ def callback(request):
                             new_points = user.points 
                         User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改回原本的
                         for user in user_info:
-                            info = 'points=%s'%(new_points)
+                            info = '剩餘黑客松幣數=%s'%(new_points)
                             message.append(TextSendMessage(text=info)) #輸出
                     else :
                         message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
@@ -176,7 +176,7 @@ def callback(request):
                             new_points = user.points 
                         User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url).update(points=new_points) #修改回原本的
                         for user in user_info:
-                            info = '現在黑客松幣數=%s'%(new_points)
+                            info = '剩餘黑客松幣數=%s'%(new_points)
                             message.append(TextSendMessage(text=info)) #輸出
                     else :
                         message.append(TextSendMessage(text='請到抽獎區抽獎，並出示抽獎卷'))
