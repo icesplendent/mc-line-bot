@@ -689,7 +689,7 @@ def callback(request):
                     f_l=['尚未完成','已完成']
                     user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url)
                     for user in user_info:
-                        info = '中國信託=%s'%(f_l[user.CTBC])
+                        info = '中國信託：%s\n台積電：%s\n意法半導體：%s\nASML 艾司摩爾：%s\n恩智浦半導體：%s\n原相科技：%s\nKronos Research 麒點科技：%s\n國泰金控：%s\nLINE：%s\nYahoo：%s\n一零四資訊科技：%s\n新竹市政府：%s\n'%(f_l[user.CTBC],f_l[user.tsmc],f_l[user.STM],f_l[user.ASML],f_l[user.NXP],f_l[user.Pixart],f_l[user.Kronos],f_l[user.Cathay],f_l[user.Line],f_l[user.Yahoo],f_l[user.a104],f_l[user.Hsinchu])
                         message.append(TextSendMessage(text=info))                
                 else:
                     message.append(TextSendMessage(text='輸入格式錯誤'))
