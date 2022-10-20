@@ -685,6 +685,12 @@ def callback(request):
                     message.append(TextSendMessage(text=''))
                 elif ('查看Level 3獎品清單' in event.message.text):
                     message.append(TextSendMessage(text=''))
+                elif event.message.text=='查看企業任務完成進度':
+                    f_l=['尚未完成','已完成']
+                    user_info = User_Info.objects.filter(uid=uid,name=name,pic_url=pic_url)
+                    for user in user_info:
+                        info = '中國信託=%s'%(f_l[user.CTBC])
+                        message.append(TextSendMessage(text=info))                
                 else:
                     message.append(TextSendMessage(text='輸入格式錯誤'))
                 line_bot_api.reply_message(event.reply_token,message)
