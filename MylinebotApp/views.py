@@ -36,6 +36,7 @@ def secretnum(a):
 
 @csrf_exempt
 def callback(request):
+    print(request)
     if request.method == 'POST':
         signature = request.META['HTTP_X_LINE_SIGNATURE']
         body = request.body.decode('utf-8')
